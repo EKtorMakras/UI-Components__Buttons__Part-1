@@ -1,0 +1,402 @@
+// * --------------- Variables--------------- * //
+
+//& ----- COLORS ----- //
+
+$clr-black:#000;
+$clr-white:#fff;
+
+
+//% Shades Of Grey //
+
+/* General ones */
+$clr-grey-light-1:#f7f7f7;
+$clr-grey-light-2:#eee;
+
+$clr-grey-dark-1:#777;
+$clr-grey-dark-2:#999;
+$clr-grey-dark-3:#333;
+
+
+/* darkest grey - used for headings */
+$clr-grey-1: #102a42;
+$clr-grey-2: #243a52;
+$clr-grey-3: #324d67;
+$clr-grey-4: #48647f;
+
+
+/* lighter grey - used for paragraphs */
+$clr-grey-5: #617d98;
+$clr-grey-6: #829ab0;
+$clr-grey-7: #9eb2c7;
+$clr-grey-8: #bcccdc;
+$clr-grey-9: #dae2ec;
+$clr-grey-10: #f1f5f8;
+
+//% --- //
+
+
+//%  Primary Color //
+
+// $clr-primary:;
+
+// $clr-primary-light:;
+
+// $clr-primary-dark:;
+
+//% --- //
+
+
+//%  Secondary Color //
+
+// $clr-secondary:;
+
+// $clr-secondary-light:;
+
+// $clr-secondary-dark:;
+
+//% --- //
+
+
+//& ----- ----- //
+
+
+
+//& ----- FONTS ----- //
+
+// Text
+$fnt-small-1:1.2rem;
+$fnt-small-2:1.4rem;
+$fnt-small-3:1.5rem;
+$fnt-default:1.6rem;
+$fnt-big-1:1.7rem;
+$fnt-big-2:1.8rem;
+$fnt-big-3:1.9rem;
+$fnt-big-4:2rem;
+$fnt-big-5:2.1rem;
+$fnt-big-6:2.2rem;
+
+
+// Headings
+$fnt-head-1:5rem;
+$fnt-head-2:3.8rem;
+$fnt-head-3:2.5rem;
+$fnt-head-4:1.8rem;
+
+
+// Font Families
+$ff-primary: "Lato",
+sans-serif;
+$ff-secondary : Arial,
+Helvetica,
+sans-serif;
+
+//& ----- ----- //
+
+
+//& ----- OTHER----- //
+
+$spacing: 2.5px;
+$radius:3px;
+$transition:all .5s ease;
+$shadow-light:.3rem .6rem 1rem 0 rgba(0, 0, 0, .1);
+$shadow-dark:.3rem .6rem 1rem 0 rgba(0, 0, 0, .2);
+
+//& ----- ----- //
+
+// * --------------- --------------- * //
+
+
+
+
+// * --------------- Mixins --------------- * //
+
+//% --- Center an element --- //
+
+// Center with position //
+@mixin center-pos {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+// Center with flexbox //
+@mixin center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+// Center with margins //
+@mixin center-mar {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+//% --- --- //
+
+
+//% --- Standard Pseudo Element --- //
+
+@mixin pseudo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    transition: all .5s ease;
+}
+
+//% --- --- //
+
+
+
+//% ---------- Media Queries ---------- //
+
+//@ ----- All Widths ----- //
+
+@mixin media-min ($width) {
+    @media screen and (min-width:$width) {
+        @content;
+    }
+}
+
+@mixin media-max ($width) {
+    @media screen and (max-width:$width) {
+        @content;
+    }
+}
+
+@mixin media-min-max($min-width, $max-width) {
+    @media screen and (min-width:$min-width) and (max-width:$max-width) {
+        @content;
+    }
+}
+
+//@ -----  ----- //
+
+
+//@ ----- Custom Widths ----- //
+
+
+//# -- Breakpoint Choices --//
+
+// -- phone (0-600px)
+// -- tab-port (600-900px)
+// -- tab-land (900-1200px)
+// -- desktop  (1200-1800px)
+// -- desktop-big (1800px +)
+
+//# -- -- //
+
+
+@mixin respond($breakpoint) {
+
+    // 600px
+
+    @if $breakpoint==phone {
+        @media screen and (max-width:37.5em) {
+            @content;
+        }
+    }
+
+
+    // 900px
+
+    @if $breakpoint==tab-port {
+        @media screen and (max-width:56.25em) {
+            @content;
+        }
+    }
+
+
+    // 1200px
+
+    @if $breakpoint==tab-land {
+        @media screen and (max-width:75em) {
+            @content;
+        }
+    }
+
+
+    @if $breakpoint==desktop {
+        @media screen and (min-width:75em) {
+            @content;
+        }
+    }
+
+
+    // 1800px
+
+    @if $breakpoint==desktop-big {
+        @media screen and (min-width:112.5em) {
+            @content;
+        }
+    }
+}
+
+//@ -----  ----- //
+
+
+//% ----------   ---------- //
+
+//# -- Media -- //
+// @include respond (tab-port) {}
+
+
+// * --------------- --------------- * //
+
+
+
+// * --------------- Functions --------------- * //
+
+
+// * --------------- --------------- * //
+
+
+
+
+//* ---------------  Resets - Typography ---------------  * //
+
+//^ ---- Resets ---- //
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+
+    font-size: 62.5%;
+
+
+    //# ---- Media ---- //
+
+    @include respond (desktop-big) {
+        font-size: 75%; // 1rem = 12px //
+    }
+
+    @include respond (tab-land) {
+        font-size: 56.25%; // 1rem = 9px //
+    }
+
+    @include respond (tab-port) {
+        font-size: 50%; // 1rem = 8px //
+    }
+
+    @include respond (phone) {
+        font-size: 43.75%; // 1rem = 7px //
+    }
+
+    //# ---- ---- //
+}
+
+//^ ---- ---- //
+
+
+
+//^ ---- Generic Styles ---- //
+
+body {
+    overflow-x: hidden;
+}
+
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+
+a {
+    text-decoration: none;
+    transition: $transition;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+p {
+    line-height: 1.8;
+}
+
+//% ------- Typography ------- //
+
+
+// 
+
+body {
+    font-family: $ff-primary;
+    font-size: $fnt-default;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+
+//^ --- Headings --- //
+
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: $spacing;
+    text-transform: uppercase;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+
+
+h1 {
+    font-size: $fnt-head-1;
+    font-weight: 100;
+    color: $clr-grey-2;
+}
+
+
+h2 {
+    font-size: $fnt-head-2;
+    font-weight: 300;
+    color: $clr-grey-3;
+}
+
+
+h3 {
+    font-size: $fnt-head-3;
+    font-weight: 300;
+    color: $clr-grey-2;
+}
+
+h4 {
+    font-size: $fnt-head-4;
+    font-weight: 300;
+    color: $clr-grey-2;
+}
+
+//^ --- --- // 
+
+
+
+//^ --- Other --- //
+
+p {
+    font-size: $fnt-default;
+    color: $clr-grey-10;
+    white-space: nowrap;
+}
+
+//^ --- --- //
+
+//% ------- ------- //
+
+//* ---------------   ---------------  * //

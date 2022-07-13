@@ -1,0 +1,1765 @@
+@use 'abstracts'as *;
+
+//* -------- Generic -------- * //
+
+body {
+    padding: 3rem;
+}
+
+.container {
+    padding: 2rem 6rem;
+    border: 2px solid $clr-grey-3;
+    background-color: $clr-grey-8;
+}
+
+.heading {
+
+    &--main {
+        text-align: center;
+        margin-bottom: 5rem;
+
+        &::after {
+            content: '';
+            display: block;
+            margin-top: 2rem;
+            width: 100%;
+            height: 1px;
+            background-color: $clr-grey-dark-1;
+            @include center-mar;
+        }
+    }
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr));
+    column-gap: 4rem;
+    row-gap: 8rem;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2.5rem;
+    background-color: #fff;
+    text-align: center;
+    min-height: 30rem;
+
+    &-title {
+        font-size: 2.5rem;
+        text-transform: capitalize;
+        text-align: center;
+        margin-bottom: 3rem;
+        word-break: break-all;
+
+        &::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: rgba(194, 143, 4, 0.945);
+            @include center-mar;
+            margin-top: 1.5rem;
+        }
+    }
+}
+
+
+p {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    transition: all .5s ease;
+}
+
+
+%btn {
+    border: none;
+    outline: none;
+    padding: 2rem 4rem;
+    min-width: 18rem;
+    background-color: rgb(226, 102, 122);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: $shadow-light;
+    transition: all .5s ease;
+    letter-spacing: 1.5px;
+
+
+    p {
+        letter-spacing: inherit;
+    }
+}
+
+.btn-container {
+    height: 100%;
+    background-color: $clr-grey-8;
+    @include center-flex;
+}
+
+:where(.project>.btn-container>*[class*='__btn']) {
+    @extend %btn;
+}
+
+//* --------  -------- * //
+
+
+
+
+//* ------------------------- GenericHover Buttons ------------------------- *//
+
+//$ --------------- genericHoverBtn1 --------------- $//
+
+.genericHoverBtn1 {
+
+    &__btn {
+        background-color: $clr-grey-10;
+        padding: 1.5rem 3.5rem;
+        border: 1.5px solid #e1332d;
+        border-radius: 0;
+        transition: all .3s ease-in;
+    }
+
+
+    &__text {
+        color: #e1332d;
+        font-size: 2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        transition: all .3s ease-in;
+        letter-spacing: -.2px !important;
+    }
+
+    &__btn:hover {
+        border: 3px solid #e1332d;
+        background-color: #d8dde2;
+    }
+
+    &__btn:hover &__text {
+        letter-spacing: 6px !important;
+        font-weight: 700;
+    }
+}
+
+//$ --------------- End Of genericHoverBtn1 --------------- $//
+
+
+//$ --------------- genericHoverBtn2 --------------- $//
+
+.genericHoverBtn2 {
+
+    &__btn {
+        background-color: #101031;
+        padding: 1.5rem 3.5rem;
+        border: 1px solid #270e31;
+        transition: all .5s linear;
+
+
+
+        &::before {
+            content: 'Hover Me';
+            @include pseudo;
+            @include center-flex;
+            background-color: #a5be72;
+            color: #270e31;
+            font-size: 2rem;
+        }
+
+
+        &::after {
+            content: 'Hover Me';
+            @include pseudo;
+            @include center-flex;
+            background-color: #a5be72;
+            color: #270e31;
+            font-size: 2rem;
+            transform: translateX(-100%) translateY(100%);
+        }
+
+
+        &:hover::before {
+            transform: translate(100%, -100%);
+        }
+
+        &:hover::after {
+            transform: translate(0, 0);
+        }
+    }
+
+
+    &__text {
+        color: transparent;
+        font-size: 2rem;
+    }
+
+
+}
+
+//$ --------------- End Of genericHoverBtn2 --------------- $//
+
+
+//$ --------------- genericHoverBtn3 --------------- $//
+
+.genericHoverBtn3 {
+
+    &__btn {
+        background-color: #776d6d;
+        border: 2px solid #ff0;
+
+
+        &::before {
+            content: 'Button';
+            @include pseudo;
+            @include center-flex;
+            text-transform: uppercase;
+            background-color: #333;
+            color: #ff0;
+        }
+
+
+        &::after {
+            content: 'Button';
+            @include pseudo;
+            @include center-flex;
+            left: -100%;
+            text-transform: uppercase;
+            background-color: #333;
+            color: #ff0;
+            transform: scale(0) rotateY(0);
+            opacity: 0;
+        }
+
+
+        &:hover::before {
+            left: 100%;
+            transform: scale(0) rotateY(360deg);
+            opacity: 0;
+        }
+
+        &:hover::after {
+            left: 0;
+            transform: scale(1) rotateY(360deg);
+            opacity: 1;
+        }
+    }
+
+
+    &__text {
+        color: transparent;
+        text-transform: uppercase;
+    }
+
+
+}
+
+//$ --------------- End Of genericHoverBtn3 --------------- $//
+
+//* ------------------------- End Of GenericHover Buttons ------------------------- *//
+
+
+
+//* ------------------------- Creative Buttons ------------------------- *//
+
+
+//$ --------------- creativeBtn1 --------------- $//
+
+.creativeBtn1 {
+
+
+    &__btn {
+        background-color: #be9902;
+        overflow: visible;
+
+
+        &::before {
+            content: 'Button';
+            @include pseudo;
+            @include center-flex;
+            background-color: rgb(0, 97, 0);
+            color: $clr-grey-10;
+            transform: rotateX(270deg);
+            transform-origin: bottom;
+        }
+
+
+        &::after {
+            content: 'Button';
+            @include pseudo;
+            @include center-flex;
+            background-color: rgb(165, 0, 0);
+            color: $clr-grey-10;
+            transform: rotateX(270deg);
+            transform-origin: top;
+            transition-delay: .2s;
+        }
+
+
+        &:hover::before {
+            transform: rotateX(0);
+        }
+
+        &:hover::after {
+            transform: rotateX(0);
+        }
+    }
+
+
+    &__text {
+        color: $clr-grey-10;
+    }
+}
+
+//$ --------------- End Of creativeBtn1 --------------- $//
+
+
+//$ --------------- creativeBtn2 --------------- $//
+
+.creativeBtn2 {
+
+
+    &__btn {
+        background-color: transparent;
+        box-shadow: none;
+        letter-spacing: 4px;
+        padding: 1rem 4rem;
+        overflow: visible;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            width: 50%;
+            top: -5px;
+            left: -1px;
+            background-color: #ee5253;
+            transform: skewX(30deg);
+            transition: all .2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+
+        &::after {
+            content: '';
+            @include pseudo;
+            width: 50%;
+            top: 4px;
+            left: 51%;
+            background-color: #0a3d62;
+            transform: skewX(30deg);
+            transition: all .2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+
+        &:hover::before {
+            transform: skewX(0);
+            top: 0;
+            left: 50%;
+        }
+
+        &:hover::after {
+            transform: skewX(0);
+            top: 0;
+            left: 0;
+        }
+    }
+
+
+    &__text {
+        color: #ffe9e9;
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+//$ --------------- End Of creativeBtn2 --------------- $//
+
+
+
+//$ --------------- creativeBtn3 --------------- $//
+
+.creativeBtn3 {
+
+
+    &__btn {
+        background-color: #cecece;
+        border: 2px solid #333;
+        letter-spacing: 2.2px;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            background-color: #333;
+            opacity: 0;
+        }
+
+        &:hover::before {
+            transform: rotate(15deg);
+            opacity: 1;
+        }
+    }
+
+
+    &__text {
+        color: #333;
+        font-size: 2.2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__btn:hover &__text {
+        color: $clr-grey-10;
+    }
+
+
+    span {
+        color: transparent;
+        position: relative;
+        z-index: 2;
+
+
+        &::before {
+            content: 'B';
+            position: absolute;
+            z-index: 2;
+            color: #333;
+            transition: $transition;
+        }
+    }
+
+
+    &__btn:hover span::before {
+        color: $clr-grey-10;
+        font-size: 6rem;
+        transform: translateX(-55%) translateY(-30%) rotate(360deg);
+    }
+}
+
+//$ --------------- End Of creativeBtn3 --------------- $//
+
+
+//* ------------------------- End Of Creative Buttons ------------------------- *//
+
+
+
+//* ------------------------- FillOnHover Buttons ------------------------- *//
+
+//$ --------------- fillOnHoverBtn1 --------------- $//
+
+.fillOnHoverBtn1 {
+
+
+    &__btn {
+        border: 2px solid #333;
+        background-color: $clr-grey-9;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            background-color: #c2920fe8;
+            transform-origin: bottom left;
+            transform: rotate(-90deg);
+        }
+
+
+        &:hover::before {
+            transform: rotate(0);
+        }
+    }
+
+
+    &__text {
+        position: relative;
+        z-index: 2;
+        color: #333;
+        font-size: 2rem;
+        font-weight: 500;
+    }
+}
+
+//$ --------------- End Of fillOnHoverBtn1 --------------- $//
+
+
+
+//$ --------------- fillOnHoverBtn2 --------------- $//
+
+.fillOnHoverBtn2 {
+
+
+    &__btn {
+        border: 2px solid #1f1f1fed;
+        background-color: #8ab5d1;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            background-color: #074066;
+            transform: translateX(-100%);
+            transition: all .8s ease;
+        }
+    }
+
+
+    &__text {
+        position: relative;
+        z-index: 2;
+        color: rgb(34, 34, 34);
+        font-weight: 500;
+        transition: all .8s ease;
+    }
+
+
+    &__btn:hover::before {
+        transform: translateX(0);
+    }
+
+    &__btn:hover &__text {
+        color: $clr-grey-10
+    }
+}
+
+//$ --------------- End Of fillOnHoverBtn2 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn3 --------------- $//
+
+.fillOnHoverBtn3 {
+
+
+    &__btn {
+        border: 2px solid #2f2f2f;
+        background-color: #88bea1;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            background-color: #383d3a;
+            transform: rotateX(90deg);
+            transition: all 1s ease;
+        }
+
+
+        &::after {
+            content: '';
+            @include pseudo;
+            background-color: #383d3a;
+            transform: rotateY(90deg);
+            transition: all 1s ease;
+        }
+    }
+
+
+    &__text {
+        position: relative;
+        z-index: 2;
+        color: #181818;
+        transition: all 1s ease;
+    }
+
+
+    &__btn:hover::before {
+        transform: rotateX(0);
+    }
+
+    &__btn:hover::after {
+        transform: rotateY(0);
+    }
+
+    &__btn:hover &__text {
+        color: $clr-grey-10
+    }
+}
+
+//$ --------------- End Of fillOnHoverBtn3 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn4 --------------- $//
+
+.fillOnHoverBtn4 {
+
+
+    &__btn {
+        border: 3px solid $clr-grey-10;
+        background-color: #5b3e6b;
+
+
+        &::before {
+            content: 'Yeah!';
+            @include pseudo;
+            @include center-flex;
+            z-index: 2;
+            background-color: #90272c;
+            color: $clr-grey-10;
+            transform: translateY(-101%);
+        }
+    }
+
+
+    &__text {
+        position: relative;
+        color: $clr-grey-10;
+    }
+
+
+    &__btn:hover::before {
+        transform: translateY(0);
+    }
+}
+
+//$ --------------- End Of fillOnHoverBtn4 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn5 --------------- $//
+
+.fillOnHoverBtn5 {
+
+
+    &__btn {
+        border: 2px solid #444;
+        background-color: #e9c9af;
+
+
+        &::before {
+            content: 'See More';
+            @include pseudo;
+            @include center-flex;
+            z-index: 2;
+            background-color: #444;
+            color: $clr-grey-10;
+            transform: scale(4);
+            opacity: 0;
+        }
+
+
+        &:hover::before {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+
+    &__text {
+        position: relative;
+        color: #444;
+        font-weight: 500;
+    }
+
+}
+
+//$ --------------- End Of fillOnHoverBtn5 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn6 --------------- $//
+
+.fillOnHoverBtn6 {
+
+
+    &__btn {
+        border: 2px solid #ff6347;
+        background-color: #fffcec;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            @include center-flex;
+            background-color: #ff6347;
+            border-radius: 0 0 50% 50%;
+            height: 0;
+        }
+    }
+
+
+    &__btn:hover::before {
+        height: 200%;
+    }
+
+    &__btn:hover &__text {
+        color: $clr-grey-10;
+    }
+
+
+    &__text {
+        position: relative;
+        z-index: 2;
+        color: #ff6347;
+    }
+
+}
+
+//$ --------------- End Of fillOnHoverBtn6 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn7 --------------- $//
+
+.fillOnHoverBtn7 {
+
+
+    &__btn {
+        border: 2px solid #f6b93b;
+        background-color: #414141;
+
+
+        &::before,
+        &::after {
+            content: '';
+            @include pseudo;
+            @include center-flex;
+            width: 25%;
+            background-color: #f6b93b;
+            transition: all .2s ease;
+        }
+
+        &::before {
+            top: 0;
+            left: -25%;
+        }
+
+        &::after {
+            width: 26%;
+            top: -100%;
+            left: 25%;
+            transition-delay: .1s;
+        }
+    }
+
+
+    &__text {
+        color: #f6b93b;
+        transition: all .2s ease;
+
+
+        span {
+            position: relative;
+            z-index: 2;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            @include pseudo;
+            @include center-flex;
+            width: 25%;
+            background-color: #f6b93b;
+            left: unset;
+            transition: all .2s ease;
+        }
+
+
+        &::before {
+            top: 100%;
+            right: 25%;
+            transition-delay: .2s;
+        }
+
+
+        &::after {
+            top: 0;
+            right: -25%;
+            transition-delay: .3s;
+        }
+    }
+
+
+    &__btn:hover::before {
+        top: 0;
+        left: 0;
+    }
+
+    &__btn:hover::after {
+        top: 0;
+        left: 25%;
+    }
+
+    &__btn:hover &__text {
+        color: $clr-grey-10;
+    }
+
+    &__btn:hover &__text::before {
+        top: 0;
+        right: 25%;
+    }
+
+    &__btn:hover &__text::after {
+        top: 0;
+        right: 0;
+    }
+}
+
+//$ --------------- End Of fillOnHoverBtn7 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn8 --------------- $//
+
+.fillOnHoverBtn8 {
+
+
+    &__btn {
+        border: 2px solid #250e74;
+        background-color: #baa5f6;
+        height: 8rem;
+        padding: 0;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            @include center-flex;
+            border-top: 4rem solid #250e74;
+            border-bottom: 4rem solid #250e74;
+            border-right: 4rem solid transparent;
+            transform: translateX(-100%);
+        }
+
+        &::after {
+            content: '';
+            @include pseudo;
+            @include center-flex;
+            border-top: 4rem solid #250e74;
+            border-bottom: 4rem solid #250e74;
+            border-left: 4rem solid transparent;
+            transform: translateX(100%);
+        }
+
+
+        &:hover::before {
+            transform: translateX(0);
+        }
+
+        &:hover::after {
+            transform: translateX(0);
+        }
+    }
+
+
+    &__text {
+        position: relative;
+        z-index: 2;
+        color: #250e74;
+    }
+
+
+    &__btn:hover &__text {
+        color: $clr-grey-10;
+    }
+}
+
+//$ --------------- End Of fillOnHoverBtn8 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn9 --------------- $//
+
+.fillOnHoverBtn9 {
+
+
+    &__btn {
+        background-color: transparent;
+        box-shadow: none;
+        overflow: visible;
+
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 2rem;
+            height: 2rem;
+            background-color: #012762;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            transition: all .5s ease;
+            opacity: 0;
+        }
+
+        &::before {
+            left: 0;
+            box-shadow: -5rem 0 0 #012762;
+        }
+
+        &::after {
+            right: 0;
+            box-shadow: 5rem 0 0 #012762;
+        }
+
+
+        &:hover::before {
+            left: 50%;
+            box-shadow: 3rem 0 0 #012762;
+            transform: translateX(-50%) translateY(-50%);
+            opacity: 1;
+        }
+
+        &:hover::after {
+            right: 50%;
+            box-shadow: -3rem 0 0 #012762;
+            transform: translateX(50%) translateY(-50%);
+            opacity: 1;
+        }
+    }
+
+
+    &__text {
+        color: #013b62;
+        transition: all .3s ease;
+        transition-delay: .4s;
+    }
+
+
+    &__btn:hover &__text {
+        color: $clr-grey-10;
+        position: relative;
+        z-index: 3;
+    }
+
+
+    &__span {
+        @include pseudo;
+        @include center-flex;
+        z-index: 2;
+        background-color: #013b62;
+        border-radius: 8px;
+        transform: scale(0);
+        transition: all .2s ease;
+        transition-delay: .4s;
+    }
+
+
+    &__btn:hover &__span {
+        transform: scale(1);
+        box-shadow: .3rem .6rem 1rem 0 rgba(0, 0, 0, .1);
+    }
+
+}
+
+//$ --------------- End Of fillOnHoverBtn9 --------------- $//
+
+
+//$ --------------- fillOnHoverBtn10 --------------- $//
+
+.fillOnHoverBtn10 {
+
+
+    &__btn {
+        // border: 2px solid #333;
+        background-color: $clr-grey-9;
+
+
+
+    }
+
+
+    &__text {
+        position: relative;
+        z-index: 2;
+        color: #333;
+        font-size: 2.2rem;
+        font-weight: 500;
+    }
+
+
+    &__btn:hover &__text {
+        color: $clr-grey-10;
+    }
+
+
+    &__span {
+        @include pseudo;
+        background-color: transparent;
+        border: 2px solid #333;
+
+
+        &::before {
+            content: '';
+            position: absolute;
+            height: 500%;
+            width: 8%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-60deg);
+            background-color: $clr-grey-9;
+            transition: $transition;
+        }
+    }
+
+
+    &__btn:hover &__span::before {
+        width: 100%;
+        background-color: #333;
+        transform: translate(-50%, -50%) rotate(60deg);
+    }
+}
+
+//$ --------------- End Of fillOnHoverBtn10 --------------- $//
+
+//* ------------------------- End Of FillOnHover Buttons ------------------------- *//
+
+
+
+
+//* ------------------------- Ripple Buttons ------------------------- *//
+
+//$ --------------- rippleBtn 1 --------------- $//
+
+.rippleBtn1 {
+
+
+    &__btn {
+        background-color: #83810b;
+        border-radius: 1rem;
+
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            padding-top: 200%;
+            padding-left: 200%;
+            left: 0;
+            bottom: 0;
+            background-image: linear-gradient(45deg, rgba(149, 149, 29, 0.808) 20%, rgba(34, 99, 153, 0.876) 50%, rgba(87, 161, 26, 0.89) 80%);
+            transition: all .8s ease-out;
+            border-radius: 1rem;
+            opacity: 0;
+        }
+
+
+        &:active {
+            box-shadow: .5rem .4rem 1rem 0 rgba(0, 0, 0, .3);
+            transform: translateY(2px);
+        }
+
+        &:active::after {
+            padding: 0;
+            opacity: 1;
+        }
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: #fff;
+    }
+
+}
+
+//$ --------------- End Of rippleBtn 1 --------------- $//
+
+
+//$ --------------- rippleBtn 2 --------------- $//
+
+.rippleBtn2 {
+
+
+    &__btn {
+        background-color: #214d03d7;
+        border: 2px solid $clr-grey-10;
+        transition: all .5s ease-out;
+
+
+
+        &::after {
+            content: '';
+            @include pseudo;
+            display: block;
+            height: 2rem;
+            width: 110%;
+            background-color: #fdeeee55;
+            transform: translateX(-100%) rotate(45deg);
+            transition: all .5s ease-out;
+            border-radius: 1rem;
+        }
+
+
+        &:hover {
+            background-color: #44a504d7;
+        }
+
+
+        &:hover::after {
+            transform: translateX(100%) rotate(45deg);
+        }
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: #fff;
+    }
+
+}
+
+//$ --------------- End Of rippleBtn 2 --------------- $//
+
+
+
+//$ --------------- Project 1 --------------- $//
+//$ --------------- End Of Project 1 --------------- $//
+
+
+//* ------------------------- End Of Ripple Buttons ------------------------- *//
+
+
+
+
+//* ------------------------- ElementOnHover Buttons ------------------------- *//
+
+
+//$ --------------- elementOnHoverBtn1 --------------- $//
+
+
+.elementOnHoverBtn1 {
+
+
+    &__btn {
+        width: 22rem;
+        padding: 2.2rem 3.2rem;
+        background-color: rgb(195, 33, 101);
+        border-radius: 1rem;
+    }
+
+    &__btn:hover &__text {
+        padding-right: 1.5rem;
+    }
+
+    &__btn:hover &__text::after {
+        right: -1rem;
+        opacity: 1;
+    }
+
+    &__text {
+        font-size: 2rem;
+        transition: all .6s ease;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+
+
+        &::after {
+            content: '\00bb';
+            display: inline-block;
+            font-size: 3rem;
+            line-height: 0;
+            color: $clr-grey-10;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-top: -1px;
+            right: -3rem;
+            transition: all .5s ease-out;
+        }
+    }
+
+}
+
+//$ --------------- End Of elementOnHoverBtn1 --------------- $//
+
+
+
+//$ --------------- Project 1 --------------- $//
+//$ --------------- End Of Project 1 --------------- $//
+
+//* ------------------------- End Of ElementOnHover Buttons ------------------------- *//
+
+
+
+
+//* ------------------------- Pulsing Buttons ------------------------- *//
+
+
+//$ --------------- pulsingBtn1 --------------- $//
+
+.pulsingBtn1 {
+
+
+    &__btn {
+        padding: 1.8rem 4.2rem;
+        background-color: #fff;
+        border-radius: 100px;
+        overflow: visible;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            background-color: #fff;
+            border-radius: 100px;
+        }
+
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+        }
+
+        &:hover::before {
+            transform: scaleX(1.2) scaleY(1.4);
+            opacity: 0;
+        }
+
+        &:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+        }
+    }
+
+
+
+    &__text {
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        color: #777;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+//$ --------------- End Of pulsingBtn1 --------------- $//
+
+
+
+//* ------------------------- End Of Pulsing Buttons ------------------------- *//
+
+
+
+
+//* ------------------------- Wavy Buttons ------------------------- *//
+
+
+//$ --------------- wavyBtn1 --------------- $//
+
+.wavyBtn1 {
+
+
+    .btn-container {
+        background-color: #333;
+    }
+
+    &__btn {
+        background-color: transparent;
+        border: 1px solid #00aeff;
+        letter-spacing: 2.3px;
+    }
+
+
+    &__text {
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        color: #00aeff;
+        position: relative;
+        z-index: 2;
+    }
+
+
+    &__btn:hover &__text {
+        color: $clr-grey-10;
+    }
+
+
+    &__wave {
+        @include pseudo;
+        top: calc(100% + 22px);
+        background-color: #00aeff;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            top: -22px;
+            height: 22px;
+            background: url(../img/wave.png);
+            animation: wavy .5s linear infinite;
+        }
+    }
+
+
+    &__btn:hover &__wave {
+        top: 0;
+    }
+
+
+    @keyframes wavy {
+
+        0% {
+            background-position-x: 0;
+        }
+
+        100% {
+            background-position-x: 118px;
+        }
+
+    }
+}
+
+//$ --------------- End Of wavyBtn1 --------------- $//
+
+
+
+//* ------------------------- End Of Wavy Buttons ------------------------- *//
+
+
+
+
+//* ------------------------- BorderEff Buttons ------------------------- *//
+
+
+//$ --------------- borderEffBtn1 --------------- $//
+
+.borderEffBtn1 {
+
+
+    &__btn {
+        background-color: #8b955c;
+        padding: 1.5rem 4rem;
+        transition: all .5s ease-in-out;
+
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2rem;
+            width: 2rem;
+            border-top: 0.2rem solid #503e04d5;
+            border-left: 0.2rem solid #503e04d5;
+            transition: all .5s ease-in-out;
+        }
+
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 2rem;
+            width: 2rem;
+            border-bottom: 0.2rem solid #503e04d5;
+            border-right: 0.2rem solid #503e04d5;
+            transition: all .5s ease-in-out;
+        }
+
+
+        &:hover {
+            background-color: #6e7649;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+//$ --------------- End Of borderEffBtn1 --------------- $//
+
+
+//$ --------------- borderEffBtn2 --------------- $//
+
+.borderEffBtn2 {
+
+
+    &__btn {
+        background-color: transparent;
+        padding: 1rem 4rem;
+        box-shadow: none;
+        transition-delay: .2s;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            height: 1px;
+            left: -100%;
+            background-color: #333;
+        }
+
+
+        &::after {
+            content: '';
+            @include pseudo;
+            height: 1px;
+            bottom: 0;
+            right: -100%;
+            left: unset;
+            top: unset;
+            background-color: #333;
+        }
+
+
+        &:hover::before {
+            left: 0;
+        }
+
+        &:hover::after {
+            right: 0;
+        }
+
+        &:hover {
+            background-color: $clr-grey-7;
+            box-shadow: $shadow-light;
+        }
+    }
+
+
+    &__text {
+        font-size: 2.7rem;
+        letter-spacing: 1.5px;
+        color: #333;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            width: 1px;
+            right: 0;
+            left: unset;
+            top: -100%;
+            background-color: #333;
+        }
+
+
+        &::after {
+            content: '';
+            @include pseudo;
+            width: 1px;
+            top: 100%;
+            background-color: #333;
+        }
+    }
+
+
+    &__btn:hover &__text::before {
+        top: 0
+    }
+
+    &__btn:hover &__text::after {
+        top: 0
+    }
+}
+
+//$ --------------- End Of borderEffBtn2 --------------- $//'
+
+
+
+//$ --------------- borderEffBtn7 --------------- $//
+
+.borderEffBtn7 {
+
+    .btn-container {
+        background-color: #333;
+    }
+
+    &__btn {
+        background-color: transparent;
+        letter-spacing: 2px;
+        box-shadow: none;
+        // border: 1px solid red;
+        overflow: visible;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            height: 135%;
+            top: -16%;
+            border-left: 2px solid #b91b1b;
+            border-right: 2px solid #fdc518;
+            transition: all .8s ease-out;
+        }
+
+
+        &::after {
+            content: '';
+            @include pseudo;
+            width: 114%;
+            left: -7%;
+            border-top: 2px solid #b91b1b;
+            border-bottom: 2px solid #fdc518;
+            transition: all .8s ease-out;
+            transition-delay: .1s;
+        }
+
+
+        &:hover::before {
+            transform: rotateY(180deg);
+        }
+
+        &:hover::after {
+            transform: rotateX(180deg);
+        }
+    }
+
+
+    &__text {
+        color: #fdc518;
+        text-transform: uppercase;
+        font-size: 1.8rem;
+    }
+}
+
+//$ --------------- End Of borderEffBtn7 --------------- $//
+
+
+
+//$ --------------- borderEffBtn10 --------------- $//
+
+.borderEffBtn10 {
+
+
+    &__btn {
+        padding: 1.5rem 5rem;
+        background-image: linear-gradient(135deg, #abdcff 5%, #0396ff 100%);
+
+
+        &__text {
+            font-size: 3rem;
+            letter-spacing: 2px;
+        }
+
+        &__span {
+
+            position: absolute;
+
+            &:nth-of-type(1) {
+                height: .2rem;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(to left, #43cbff, #9708cc);
+                animation: line1 1s linear infinite;
+
+
+                @keyframes line1 {
+
+                    0% {
+                        transform: translateX(-100%);
+                    }
+
+                    100% {
+                        transform: translateX(100%);
+                    }
+                }
+            }
+
+
+            &:nth-of-type(2) {
+                width: .2rem;
+                height: 100%;
+                top: 0;
+                right: 0;
+                background-image: linear-gradient(to bottom, #43cbff, #9708cc);
+                animation: line2 1s linear infinite;
+                animation-delay: 1.5s;
+
+
+                @keyframes line2 {
+
+                    0% {
+                        transform: translateY(-100%);
+                    }
+
+                    100% {
+                        transform: translateY(100%);
+                    }
+                }
+            }
+
+
+            &:nth-of-type(3) {
+                width: 100%;
+                height: .2rem;
+                bottom: 0;
+                right: 0;
+                background-image: linear-gradient(to right, #43cbff, #9708cc);
+                animation: line3 1s linear infinite;
+
+
+                @keyframes line3 {
+
+                    0% {
+                        transform: translateX(100%);
+                    }
+
+                    100% {
+                        transform: translateX(-100%);
+                    }
+                }
+            }
+
+
+            &:nth-of-type(4) {
+                width: .2rem;
+                height: 100%;
+                bottom: 0;
+                left: 0;
+                background-image: linear-gradient(to top, #43cbff, #9708cc);
+                animation: line4 1s linear infinite;
+                animation-delay: 1.5s;
+
+
+
+                @keyframes line4 {
+
+                    0% {
+                        transform: translateY(100%);
+                    }
+
+                    100% {
+                        transform: translateY(-100%);
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+//$ --------------- End Of borderEffBtn10 --------------- $//
+
+
+
+//$ --------------- Project 1 --------------- $//
+//$ --------------- End Of Project 1 --------------- $//
+
+//* ------------------------- End Of BorderEff Buttons ------------------------- *//
+
+
+
+
+//* ------------------------- 3D Buttons ------------------------- *//
+
+//$ --------------- End Of 3DBtn5 --------------- $//
+
+._3DBtn1 {
+
+
+    &__btn {
+        background-color: transparent;
+        box-shadow: none;
+        min-width: 22rem;
+        overflow: visible;
+        padding: 1rem 2rem;
+
+
+        &::before {
+            content: '';
+            @include pseudo;
+            background-color: #20caff;
+            left: -3px;
+            top: -3px;
+            transform-origin: top;
+            mix-blend-mode: multiply;
+        }
+
+        &::after {
+            content: '';
+            @include pseudo;
+            background-color: #ff7675;
+            left: 3px;
+            top: 3px;
+            mix-blend-mode: multiply;
+        }
+
+
+        &:hover::before {
+            top: -6px;
+            left: 0;
+            transform: perspective(1500px) rotateX(75deg);
+        }
+
+        &:hover::after {
+            top: 6px;
+            left: 0;
+            transform: perspective(1500px) rotateX(-75deg);
+            transform-origin: bottom;
+        }
+
+
+        &:hover {
+            background-color: $clr-grey-10;
+        }
+    }
+
+
+    &__text {
+        color: $clr-grey-10;
+        position: relative;
+        z-index: 2;
+        font-size: 2.3rem;
+    }
+
+    &__btn:hover &__text {
+        color: #313131;
+    }
+}
+
+//$ --------------- End Of 3DBtn5 --------------- $//
+
+//* ------------------------- End Of 3D Buttons ------------------------- *//
+
+
+
+
+//* ------------------------- Toggle Buttons ------------------------- *//
+
+
+//$ --------------- toggleBtn1 --------------- $//
+
+.toggleBtn1 {
+
+
+    &__btn {
+        position: relative;
+        width: 10rem;
+        height: 5rem;
+        appearance: none;
+        outline: none;
+        background-color: #fff;
+        border-radius: 2.5rem;
+        box-shadow: inset 0 0 .5rem #505050;
+        cursor: pointer;
+        transition: all .5s ease;
+
+
+        &:checked {
+            background-color: #7cfc00;
+        }
+
+        &:not(:checked) {
+            background-color: #d82323;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background-color: #c4db6e;
+            transform: scale(1.1);
+            box-shadow: 0 .1rem .3rem .1rem rgba(128, 128, 128, 0.35);
+            transition: all .5s ease;
+        }
+
+        &:checked::before {
+            left: 5rem;
+        }
+    }
+
+}
+
+//$ --------------- End Of toggleBtn1 --------------- $//
+
+
+//$ --------------- Project 1 --------------- $//
+//$ --------------- End Of Project 1 --------------- $//
+
+//* ------------------------- End Of Toggle Buttons ------------------------- *//
